@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Barbearia do Rafa · Corte e barba em Nazaré, Belém</title>
+  <meta name="description" content="Corte, barba e planos de assinatura na Tv. Quintino Bocaiúva, 1900, em Nazaré, Belém. Agende pelo site ou chegue direto.">
+  <meta name="theme-color" content="#1c130e">
+  <meta property="og:title" content="Barbearia do Rafa">
+  <meta property="og:description" content="A barbearia feita pra você. Corte e barba em Nazaré, Belém.">
+  <meta property="og:image" content="https://leleorb.github.io/barbearia-do-rafa/img/salao-fundo.jpg">
+  <meta property="og:url" content="https://leleorb.github.io/barbearia-do-rafa/">
+  <link rel="icon" href="img/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;0,6..96,600;1,6..96,500&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="topo">
+  <div class="wrap">
+    <a class="marca" href="index.html"><img src="img/logo.png" alt=""><span>Barbearia do Rafa</span></a>
+    <nav class="nav" aria-label="Seções">
+      <a href="#servicos">Serviços</a>
+      <a href="#planos">Planos</a>
+      <a href="#fotos">Fotos</a>
+      <a href="#onde">Onde estamos</a>
+    </nav>
+    <a class="btn btn-ouro" href="agendamento.html">Agendar</a>
+  </div>
+</header>
+
+<main>
+  <section class="capa">
+    <div class="wrap">
+      <div>
+        <p class="sobre">Nazaré · Belém</p>
+        <h1>A barbearia feita <em>pra você.</em></h1>
+        <p class="lead">Corte e barba num ambiente climatizado, limpo e sem frescura. Marca teu horário pelo site ou chega direto, que a gente te atende.</p>
+        <div class="acoes">
+          <a class="btn btn-ouro" href="agendamento.html">Agendar horário</a>
+          <a class="btn btn-linha js-wpp" href="#" data-msg="Olá! Vim pelo site e queria tirar uma dúvida.">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 2.9 2.9 0 0 0-.9 2.2 5 5 0 0 0 1 2.7 11.6 11.6 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.2-.2-.4-.3Z"/></svg>
+            Chamar no WhatsApp
+          </a>
+        </div>
+        <p class="nota"><span class="estrelas" aria-hidden="true">★★★★★</span><b>4,5</b> no Google · 27 avaliações</p>
+      </div>
+      <div class="capa-foto">
+        <img src="img/salao-fundo.jpg" alt="Salão da Barbearia do Rafa, com cadeiras de couro marrom e bancada de madeira" width="1120" height="1400">
+        <div class="selo"><b>Pai e filho?</b>Traz o pequeno junto.<br>Tem corte infantil.</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="faixa" aria-label="Horário de funcionamento">
+    <div class="wrap">
+      <span><b>Seg</b> 12h às 19h</span>
+      <span><b>Ter a sex</b> 09h às 19h</span>
+      <span><b>Sáb</b> 09h às 18h</span>
+    </div>
+  </div>
+
+  <section class="secao" id="servicos">
+    <div class="wrap">
+      <div class="cab">
+        <p class="sobre">Serviços</p>
+        <h2>O de sempre, <em>bem feito.</em></h2>
+        <p>Nada de cardápio de vinte itens. Corte, barba e o capricho de quem faz isso todo dia.</p>
+      </div>
+      <ul class="menu" id="menu"></ul>
+      <p class="aviso-walkin"><b>Não gosta de marcar hora?</b> Sem problema, é só chegar. Mas o movimento aperta no fim da tarde, então se quiser garantir teu horário, agenda pelo site.</p>
+    </div>
+  </section>
+
+  <section class="secao secao-creme" id="planos">
+    <div class="wrap">
+      <div class="cab">
+        <p class="sobre">Planos de assinatura</p>
+        <h2>Paga uma vez, <em>corta o mês todo.</em></h2>
+        <p>Pra quem não gosta de ficar com o cabelo passando do ponto. Uma mensalidade e você vem quantas vezes quiser.</p>
+      </div>
+      <div class="planos" id="planos-lista"></div>
+    </div>
+  </section>
+
+  <section class="secao" id="fotos">
+    <div class="wrap">
+      <div class="cab">
+        <p class="sobre">Feito aqui</p>
+        <h2>Saiu da nossa <em>cadeira.</em></h2>
+      </div>
+      <div class="galeria">
+        <figure><img src="img/corte-barba.jpg" alt="Degradê com barba cheia desenhada" loading="lazy" width="1080" height="1350"></figure>
+        <figure><img src="img/corte-topete.jpg" alt="Topete com risca e laterais bem baixas" loading="lazy" width="1080" height="1350"></figure>
+        <figure><img src="img/corte-degrade.jpg" alt="Degradê baixo visto de lado" loading="lazy" width="1080" height="1350"></figure>
+        <figure><img src="img/corte-bigode.jpg" alt="Corte curto com bigode" loading="lazy" width="1080" height="1350"></figure>
+        <figure><img src="img/corte-classico.jpg" alt="Corte social clássico com risca" loading="lazy" width="1080" height="1350"></figure>
+        <figure><img src="img/corte-texturizado.jpg" alt="Corte texturizado com barba" loading="lazy" width="1120" height="1400"></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="secao secao-creme">
+    <div class="wrap ambiente">
+      <div class="ambiente-fotos">
+        <img src="img/salao.jpg" alt="Cadeiras de barbeiro de couro em frente aos espelhos" loading="lazy" width="546" height="546">
+        <img src="img/bancada.jpg" alt="Bancada com as ferramentas da equipe" loading="lazy" width="900" height="1125">
+      </div>
+      <div>
+        <p class="sobre">O lugar</p>
+        <div class="cab" style="margin-bottom:0">
+          <h2>Senta, relaxa <em>e confia.</em></h2>
+          <p>Quem vem uma vez costuma voltar. Pelo corte e pela conversa.</p>
+        </div>
+        <ul>
+          <li>Ar-condicionado ligado, que em Belém não é luxo.</li>
+          <li>Ambiente limpo e organizado, do jeito que os clientes elogiam.</li>
+          <li>Equipe atenciosa, do primeiro contato até a saída.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="secao">
+    <div class="wrap">
+      <div class="cab">
+        <p class="sobre">Quem já sentou na cadeira</p>
+        <h2>Palavra de <em>cliente.</em></h2>
+      </div>
+      <div class="avaliacoes">
+        <figure class="avaliacao">
+          <span class="estrelas" aria-label="5 estrelas">★★★★★</span>
+          <blockquote>“O melhor lugar do mundo... Com atendimento de primeira, ambiente climatizado, confortável.”</blockquote>
+          <figcaption><b>Milla Leal</b> · Google</figcaption>
+        </figure>
+        <figure class="avaliacao">
+          <span class="estrelas" aria-label="5 estrelas">★★★★★</span>
+          <blockquote>“Excelente atendimento, do primeiro contato via celular até a saída do estabelecimento!”</blockquote>
+          <figcaption><b>Marlon Reis</b> · Google</figcaption>
+        </figure>
+        <figure class="avaliacao">
+          <span class="estrelas" aria-label="5 estrelas">★★★★★</span>
+          <blockquote>“Atendimento maravilhoso, serviço excelente, ambiente limpo e super agradável!”</blockquote>
+          <figcaption><b>Cliente</b> · Google</figcaption>
+        </figure>
+      </div>
+      <a class="google-link" href="https://www.google.com/maps/place/Barbearia+do+Rafa/data=!4m2!3m1!1s0x92a48fb5c0353f0f:0xc05cca9f28fa0738" target="_blank" rel="noopener">Ver as 27 avaliações no Google →</a>
+    </div>
+  </section>
+
+  <section class="secao secao-creme" id="onde">
+    <div class="wrap onde">
+      <div>
+        <p class="sobre">Onde estamos</p>
+        <h3 style="margin-top:.6rem">Nazaré, Belém</h3>
+        <address>Tv. Quintino Bocaiúva, 1900<br>Nazaré, Belém (PA)<br>66045-315</address>
+        <p style="margin-top:1.2rem"><a class="js-wpp" href="#" data-msg="Olá! Vim pelo site e queria tirar uma dúvida." id="tel">(91) 99164-2161</a></p>
+        <p style="margin-top:.4rem"><a href="https://www.instagram.com/a.barbeariadorafa/" target="_blank" rel="noopener">@a.barbeariadorafa</a></p>
+      </div>
+      <div>
+        <h3>Horário</h3>
+        <table class="tab-horarios" id="tab-horarios"></table>
+      </div>
+      <iframe class="mapa" title="Mapa da Barbearia do Rafa" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps?q=Barbearia%20do%20Rafa%2C%20Tv.%20Quintino%20Bocai%C3%BAva%2C%201900%2C%20Bel%C3%A9m%20-%20PA&output=embed"></iframe>
+    </div>
+  </section>
+
+  <section class="secao final">
+    <div class="wrap">
+      <h2>Tá na hora de <em>dar um tapa no visual?</em></h2>
+      <p>Escolhe o dia e o horário em menos de um minuto. A confirmação chega pelo WhatsApp.</p>
+      <div class="acoes">
+        <a class="btn btn-ouro" href="agendamento.html">Agendar horário</a>
+        <a class="btn btn-linha js-wpp" href="#" data-msg="Olá! Vim pelo site e queria tirar uma dúvida.">Chamar no WhatsApp</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="rodape">
+  <div class="wrap">
+    <span>© <span id="ano"></span> Barbearia do Rafa · Belém (PA)</span>
+    <span><a href="https://www.instagram.com/a.barbeariadorafa/" target="_blank" rel="noopener">Instagram</a> · <a class="js-wpp" href="#" data-msg="Olá! Vim pelo site.">WhatsApp</a></span>
+  </div>
+</footer>
+
+<div class="barra-movel">
+  <a class="btn btn-linha js-wpp" href="#" data-msg="Olá! Vim pelo site e queria tirar uma dúvida.">WhatsApp</a>
+  <a class="btn btn-ouro" href="agendamento.html">Agendar horário</a>
+</div>
+
+<script src="js/dados.js"></script>
+<script>
+(() => {
+  const B = window.BARBEARIA;
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const wpp = msg => `https://wa.me/${B.whatsapp}?text=${encodeURIComponent(msg)}`;
+
+  document.getElementById('menu').innerHTML = B.servicos.map(s => `
+    <li><div class="linha"><h3>${esc(s.nome)}</h3><span class="pontos"></span><span class="preco">${precoTexto(s.preco)}</span></div>
+    <p>${esc(s.desc)}</p></li>`).join('');
+
+  document.getElementById('planos-lista').innerHTML = B.planos.map(p => `
+    <article class="plano${p.destaque ? ' destaque' : ''}">
+      ${p.destaque ? '<span class="etiqueta">Mais completo</span>' : ''}
+      <h3>${esc(p.nome)}</h3>
+      <div class="valor">R$ ${p.preco}<small> /mês</small></div>
+      <p>${esc(p.desc)}</p>
+      ${p.vantagem ? `<p class="vant">+ ${esc(p.vantagem)}</p>` : ''}
+      <a class="btn ${p.destaque ? 'btn-ouro' : 'btn-terra'} js-wpp" href="#" data-msg="Olá! Vim pelo site e quero assinar o plano ${esc(p.nome)}.">Quero esse plano</a>
+    </article>`).join('');
+
+  const dias = ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'];
+  const hoje = new Date().getDay();
+  const hh = h => String(h).padStart(2, '0') + 'h';
+  document.getElementById('tab-horarios').innerHTML = [1, 2, 3, 4, 5, 6, 0].map(d => {
+    const h = B.horarios[d];
+    return `<tr${d === hoje ? ' class="hoje"' : ''}><td>${dias[d]}${d === hoje ? ' (hoje)' : ''}</td><td>${h ? hh(h[0]) + ' às ' + hh(h[1]) : 'Fechado'}</td></tr>`;
+  }).join('');
+
+  document.querySelectorAll('.js-wpp').forEach(a => {
+    a.href = wpp(a.dataset.msg || 'Olá!');
+    a.target = '_blank';
+    a.rel = 'noopener';
+  });
+  document.getElementById('ano').textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
