@@ -28,7 +28,7 @@ p { margin: 0; }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
 
 /* Botões */
-.btn { display: inline-flex; align-items: center; justify-content: center; gap: .55rem; padding: .95rem 1.5rem; border-radius: 999px; font: 600 .92rem var(--texto); text-decoration: none; border: 1.5px solid transparent; cursor: pointer; transition: transform .15s, background .2s, border-color .2s, color .2s; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: .55rem; padding: .95rem 1.5rem; border-radius: 999px; font: 600 .92rem var(--texto); text-decoration: none; background: transparent; border: 1.5px solid transparent; cursor: pointer; transition: transform .15s, background .2s, border-color .2s, color .2s; }
 .btn:hover { transform: translateY(-1px); }
 .btn:focus-visible, a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--ouro); outline-offset: 3px; }
 .btn-ouro { background: var(--ouro); color: var(--cafe); }

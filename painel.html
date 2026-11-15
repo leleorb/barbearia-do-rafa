@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Painel · Barbearia do Rafa</title>
+  <meta name="theme-color" content="#1c130e">
+  <link rel="icon" href="img/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;0,6..96,600;1,6..96,500&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/painel.css">
+</head>
+<body class="painel">
+
+<header class="topo">
+  <div class="wrap">
+    <span class="marca"><img src="img/logo.png" alt=""><span>Painel</span></span>
+    <div class="topo-acoes" id="topo-acoes" hidden>
+      <span class="quem" id="quem"></span>
+      <button class="btn btn-linha" type="button" id="sair">Sair</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- Login -->
+  <section class="login wrap" id="login">
+    <form id="form-login" novalidate>
+      <p class="sobre">Área do dono</p>
+      <h1>Entrar no <em>painel.</em></h1>
+      <div class="campo">
+        <label for="email">E-mail</label>
+        <input id="email" type="email" autocomplete="username" required>
+      </div>
+      <div class="campo">
+        <label for="senha">Senha</label>
+        <input id="senha" type="password" autocomplete="current-password" required>
+      </div>
+      <button class="btn btn-ouro" type="submit" id="entrar">Entrar</button>
+      <p class="erro" id="erro-login" role="alert"></p>
+    </form>
+  </section>
+
+  <!-- Agenda -->
+  <section class="agenda wrap" id="agenda" hidden>
+    <div class="agenda-cab">
+      <div>
+        <p class="sobre" id="data-longa">—</p>
+        <h1 id="titulo-dia">Hoje</h1>
+      </div>
+      <button class="btn btn-linha-escura" type="button" id="atualizar">Atualizar</button>
+    </div>
+
+    <div class="filtros" role="tablist" aria-label="Período">
+      <button type="button" class="filtro" data-f="hoje" aria-pressed="true">Hoje</button>
+      <button type="button" class="filtro" data-f="amanha" aria-pressed="false">Amanhã</button>
+      <button type="button" class="filtro" data-f="semana" aria-pressed="false">Próximos 7 dias</button>
+      <label class="filtro-data"><span class="sr">Escolher data</span><input type="date" id="data"></label>
+    </div>
+
+    <p class="contagem" id="contagem" aria-live="polite"></p>
+    <div id="lista" class="lista" aria-live="polite"></div>
+    <p class="erro" id="erro-agenda" role="alert"></p>
+  </section>
+</main>
+
+<script src="js/dados.js"></script>
+<script src="js/painel.js"></script>
+</body>
+</html>
