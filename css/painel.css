@@ -23,7 +23,7 @@ body.painel { background: var(--creme); min-height: 100vh; }
 .filtro { min-height: 44px; }
 .contagem { color: var(--suave); font-size: .9rem; margin-bottom: 1rem; }
 .lista { display: grid; gap: .7rem; }
-.dia-sep { font-family: var(--titulo); font-size: 1.25rem; margin: 1.4rem 0 .2rem; text-transform: capitalize; }
+.dia-sep { font-family: var(--titulo); font-weight: 600; font-size: 1.25rem; margin: 1.4rem 0 .2rem; text-transform: capitalize; }
 .cartao { display: grid; grid-template-columns: auto 1fr; gap: .4rem 1rem; background: #fff; border: 1px solid var(--linha); border-left: 4px solid var(--cobre); border-radius: 12px; padding: 1rem 1.1rem; }
 .cartao.confirmed { border-left-color: #3f7d4e; }
 .cartao.done { border-left-color: #8a8a8a; opacity: .75; }

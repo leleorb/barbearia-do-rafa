@@ -9,7 +9,7 @@
   --tinta: #2a1d15;
   --suave: #6e5a4c;
   --linha: #e3d8ca;
-  --titulo: 'Bodoni Moda', Georgia, serif;
+  --titulo: 'Manrope', system-ui, sans-serif;
   --texto: 'Montserrat', system-ui, sans-serif;
   --raio: 14px;
   --max: 1160px;
@@ -22,7 +22,7 @@ body { margin: 0; font-family: var(--texto); color: var(--tinta); background: va
 img { max-width: 100%; height: auto; display: block; }
 a { color: inherit; }
 h1, h2, h3 { font-family: var(--titulo); font-weight: 600; line-height: 1.1; margin: 0; letter-spacing: -0.01em; }
-h1 em, h2 em { font-style: italic; color: var(--ouro); font-weight: 500; }
+h1 em, h2 em { font-style: normal; color: var(--ouro); font-weight: 600; }
 p { margin: 0; }
 .wrap { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 20px; }
 .sobre { font-size: .72rem; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: var(--cobre); }
@@ -59,7 +59,7 @@ p { margin: 0; }
 .menu-btn[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 .menu-movel { position: fixed; z-index: 60; top: 68px; left: 0; right: 0; bottom: 0; overflow-y: auto; overscroll-behavior: contain; background: var(--cafe); color: var(--creme); padding: .5rem 20px calc(2rem + env(safe-area-inset-bottom)); display: flex; flex-direction: column; animation: menu-entra .18s ease-out; }
 .menu-movel ul { list-style: none; margin: 0; padding: 0; }
-.menu-movel li a { display: flex; align-items: center; min-height: 56px; font-family: var(--titulo); font-size: 1.55rem; font-weight: 500; color: var(--creme); text-decoration: none; border-bottom: 1px solid rgba(244, 238, 230, .1); }
+.menu-movel li a { display: flex; align-items: center; min-height: 56px; font-family: var(--titulo); font-size: 1.55rem; font-weight: 600; color: var(--creme); text-decoration: none; border-bottom: 1px solid rgba(244, 238, 230, .1); }
 .menu-movel li a[aria-current="page"] { color: var(--ouro); }
 .menu-movel .menu-cta { margin-top: 1.6rem; width: 100%; padding: 1rem; font-size: 1rem; }
 .menu-rodape { display: flex; gap: 1.5rem; justify-content: center; margin-top: 1.4rem; }
@@ -90,7 +90,7 @@ section[id] { scroll-margin-top: 76px; }
 .capa-foto img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 220px 220px var(--raio) var(--raio); }
 .capa-foto::before { content: ''; position: absolute; inset: -12px; border: 1px solid rgba(217, 165, 90, .45); border-radius: 232px 232px 20px 20px; pointer-events: none; }
 .selo { position: absolute; left: -10px; bottom: 28px; background: var(--creme); color: var(--tinta); border-radius: 12px; padding: .8rem 1rem; box-shadow: 0 14px 30px rgba(0, 0, 0, .35); font-size: .8rem; line-height: 1.35; }
-.selo b { display: block; font-family: var(--titulo); font-size: 1.05rem; }
+.selo b { display: block; font-family: var(--titulo); font-weight: 600; font-size: 1.05rem; }
 
 /* Faixa de horários */
 .faixa { background: var(--terra); color: var(--creme); }
@@ -150,7 +150,7 @@ section[id] { scroll-margin-top: 76px; }
 /* Avaliações */
 .avaliacoes { display: grid; gap: 1.2rem; }
 .avaliacao { margin: 0; background: var(--papel); border-radius: var(--raio); padding: 1.8rem 1.6rem; border: 1px solid var(--linha); }
-.avaliacao blockquote { margin: .8rem 0 1.2rem; font-family: var(--titulo); font-size: 1.2rem; line-height: 1.4; }
+.avaliacao blockquote { margin: .8rem 0 1.2rem; font-family: var(--titulo); font-weight: 600; font-size: 1.2rem; line-height: 1.4; }
 .avaliacao figcaption { font-size: .85rem; color: var(--suave); }
 .avaliacao figcaption b { color: var(--tinta); }
 .google-link { display: inline-block; margin-top: 1.8rem; font-weight: 600; color: var(--terra); }
@@ -223,7 +223,7 @@ fieldset.passo { border: 0; border-bottom: 1px solid var(--linha); padding-left:
 .dias .opcao { scroll-snap-align: start; flex: none; }
 .dias .cx { flex-direction: column; gap: 0; width: 68px; padding: .7rem 0; text-align: center; }
 .dias .cx small { text-transform: uppercase; letter-spacing: .08em; font-size: .68rem; }
-.dias .cx b { font-family: var(--titulo); font-size: 1.5rem; line-height: 1.2; }
+.dias .cx b { font-family: var(--titulo); font-weight: 600; font-size: 1.5rem; line-height: 1.2; }
 .horas { display: grid; grid-template-columns: repeat(auto-fill, minmax(78px, 1fr)); gap: .5rem; }
 .horas .cx { justify-content: center; padding: .7rem 0; font-weight: 600; font-size: .92rem; }
 .vazio { color: var(--suave); font-size: .92rem; }
