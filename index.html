@@ -195,6 +195,7 @@
 </div>
 
 <script src="js/dados.js"></script>
+<script src="js/menu.js"></script>
 <script>
 (() => {
   const B = window.BARBEARIA;
@@ -229,6 +230,18 @@
     a.rel = 'noopener';
   });
   document.getElementById('ano').textContent = new Date().getFullYear();
+
+  // Chegando de outra página com #secao: o navegador pula antes de os serviços e planos aparecerem,
+  // e o conteúdo novo empurra a seção. Reposiciona agora e de novo quando as fontes carregarem.
+  const alvo = location.hash && document.getElementById(decodeURIComponent(location.hash.slice(1)));
+  if (alvo) {
+    let y = null;
+    const vai = () => { alvo.scrollIntoView({ behavior: 'instant', block: 'start' }); y = window.scrollY; };
+    vai();
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(() => { if (Math.abs(window.scrollY - y) < 2) vai(); }); // não puxa de volta quem já rolou
+    }
+  }
 })();
 </script>
 </body>

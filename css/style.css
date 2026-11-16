@@ -51,6 +51,30 @@ p { margin: 0; }
 .nav a:hover { color: var(--creme); }
 .topo .btn { padding: .6rem 1.1rem; font-size: .85rem; }
 
+/* Menu do celular (☰) */
+.menu-btn { display: inline-flex; flex-direction: column; justify-content: center; align-items: center; gap: 5px; width: 44px; height: 44px; padding: 0; border: 0; border-radius: 10px; background: transparent; cursor: pointer; flex: none; }
+.menu-btn span { display: block; width: 22px; height: 2px; border-radius: 2px; background: var(--creme); transition: transform .2s, opacity .2s; }
+.menu-btn[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.menu-btn[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.menu-btn[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.menu-movel { position: fixed; z-index: 60; top: 68px; left: 0; right: 0; bottom: 0; overflow-y: auto; overscroll-behavior: contain; background: var(--cafe); color: var(--creme); padding: .5rem 20px calc(2rem + env(safe-area-inset-bottom)); display: flex; flex-direction: column; animation: menu-entra .18s ease-out; }
+.menu-movel ul { list-style: none; margin: 0; padding: 0; }
+.menu-movel li a { display: flex; align-items: center; min-height: 56px; font-family: var(--titulo); font-size: 1.55rem; font-weight: 500; color: var(--creme); text-decoration: none; border-bottom: 1px solid rgba(244, 238, 230, .1); }
+.menu-movel li a[aria-current="page"] { color: var(--ouro); }
+.menu-movel .menu-cta { margin-top: 1.6rem; width: 100%; padding: 1rem; font-size: 1rem; }
+.menu-rodape { display: flex; gap: 1.5rem; justify-content: center; margin-top: 1.4rem; }
+.menu-rodape a { display: inline-flex; align-items: center; min-height: 44px; color: rgba(244, 238, 230, .75); font-size: .9rem; font-weight: 600; }
+.menu-movel[hidden] { display: none; }
+html.menu-aberto, html.menu-aberto body { overflow: hidden; }
+html.menu-aberto .barra-movel { display: none; }
+@keyframes menu-entra { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: none; } }
+/* No celular o "Agendar" do topo sai: fica na barra de baixo e no menu. */
+@media (max-width: 899px) { .topo .wrap > .btn { display: none; } }
+@media (min-width: 900px) { .menu-btn, .menu-movel { display: none !important; } }
+
+/* Ao ir pra uma seção, ela para logo abaixo do topo fixo */
+section[id] { scroll-margin-top: 76px; }
+
 /* Capa */
 .capa { background: var(--cafe); color: var(--creme); overflow: hidden; }
 .capa .wrap { display: grid; gap: 2.5rem; padding-top: 3rem; padding-bottom: 3.5rem; }
@@ -249,5 +273,5 @@ fieldset.passo { border: 0; border-bottom: 1px solid var(--linha); padding-left:
 }
 
 @media (prefers-reduced-motion: reduce) {
-  * { transition: none !important; scroll-behavior: auto !important; }
+  * { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
 }
