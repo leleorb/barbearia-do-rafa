@@ -276,3 +276,12 @@ fieldset.passo { border: 0; border-bottom: 1px solid var(--linha); padding-left:
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
 }
+
+/* Celular (tela de toque): sem zoom e sem seleção de texto, pra usar como um app.
+   Campos de formulário continuam selecionáveis pra poder digitar e colar. */
+@media (pointer: coarse) {
+  html { touch-action: manipulation; -webkit-text-size-adjust: 100%; }
+  body { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
+  input, textarea, select { -webkit-user-select: text; user-select: text; -webkit-touch-callout: default; }
+  img { -webkit-user-drag: none; }
+}
