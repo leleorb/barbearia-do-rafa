@@ -312,3 +312,10 @@ fieldset.passo { border: 0; border-bottom: 1px solid var(--linha); padding-left:
 a.ja-agendou { display: inline-flex; align-items: center; min-height: 44px; margin-top: 1rem; padding: .55rem 1.1rem; border: 1.5px solid rgba(217, 165, 90, .55); border-radius: 999px; background: rgba(217, 165, 90, .1); color: rgba(244, 238, 230, .85); font-size: .88rem; text-decoration: none; }
 a.ja-agendou b { color: var(--ouro); font-weight: 600; }
 a.ja-agendou:hover { border-color: var(--ouro); }
+/* O menu de seções não encolhe por cima dos botões; em telas médias fica mais compacto */
+.nav { flex: none; }
+@media (min-width: 900px) and (max-width: 1199px) {
+  .nav { gap: 1.1rem; }
+  .nav a { font-size: .82rem; }
+  .btn-meus { padding: .55rem .85rem; }
+}
