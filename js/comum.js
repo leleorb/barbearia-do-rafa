@@ -73,17 +73,24 @@
     if (ehSafariIOS) { window.location.href = l.ics; return; } // Safari: abre "Adicionar ao Calendário"
     const caixa = botao.closest('[data-lembrete-caixa]') || botao.parentElement;
     let painel = caixa.parentElement.querySelector('.opcoes-lembrete');
-    if (painel) { painel.remove(); botao.setAttribute('aria-expanded', 'false'); return; }
+    const androidDireto = ehAndroid && !ehDentroDeApp;
+    if (painel) {
+      painel.remove(); botao.setAttribute('aria-expanded', 'false');
+      if (!androidDireto) return; // no Android, tocar de novo abre o Google Agenda de novo
+    }
     painel = document.createElement('div');
     painel.className = 'opcoes-lembrete';
     const google = `<a class="op-lembrete principal" href="${esc(l.google)}" target="_blank" rel="noopener">
         <b>Google Agenda</b><small>Abre o Google Agenda pra salvar o horário</small></a>`;
     if (ehIOS) {
-      // iPhone fora do Safari (app do Google, Chrome, Instagram...): o arquivo só viraria "baixar". Oferece o
-      // Google Agenda e explica como chegar ao Calendário do iPhone.
+      // iPhone fora do Safari (app do Google, Chrome, Instagram...): o arquivo só viraria "baixar".
+      // 1º tenta levar pro Safari (endereço x-safari-https://, não é garantido em todo app);
+      // depois Google Agenda e copiar o endereço.
+      const noSafari = location.protocol === 'https:' ? 'x-safari-' + location.href : null;
       painel.innerHTML = `
-        <p class="aviso-app">Este navegador não consegue abrir o <b>Calendário do iPhone</b>. Use o Google Agenda abaixo, ou abra esta página no <b>Safari</b> pra adicionar direto ao Calendário.</p>
-        ${google}
+        <p class="aviso-app">Este navegador não consegue abrir o <b>Calendário do iPhone</b>. Abra no <b>Safari</b> pra adicionar com um toque, ou use o Google Agenda.</p>
+        ${noSafari ? `<a class="op-lembrete principal" href="${esc(noSafari)}" data-safari><b>Abrir no Safari</b><small>Depois toque de novo em "Adicionar lembrete"</small></a>` : ''}
+        ${google.replace(' principal', '')}
         <button class="op-lembrete" type="button" data-copiar><b>Copiar o endereço desta página</b><small>Cole no Safari pra adicionar ao Calendário do iPhone</small></button>
         <p class="nota-lembrete">No Google Agenda, o aviso segue o padrão do seu celular. Se quiser, ajuste pra 1 hora antes ao salvar.</p>`;
       painel.querySelector('[data-copiar]').addEventListener('click', async e => {
@@ -91,6 +98,12 @@
         try { await navigator.clipboard.writeText(location.href); rot.textContent = 'Endereço copiado!'; }
         catch (err) { rot.textContent = 'Segure o endereço na barra e copie'; }
       });
+    } else if (androidDireto) {
+      // Android: um toque abre o Google Agenda direto (app, ou o site se o app não estiver instalado).
+      window.open(l.google, '_blank', 'noopener');
+      painel.innerHTML = `
+        <p class="nota-lembrete">Abrimos o <b>Google Agenda</b> pra você salvar o horário. O aviso segue o padrão do seu celular; se quiser, ajuste pra 1 hora antes ao salvar.</p>
+        <p class="nota-lembrete">Não abriu? <a href="${esc(l.google)}" target="_blank" rel="noopener">Abrir o Google Agenda</a> · Usa outro app de calendário? <a href="${esc(l.ics)}">Baixar o evento</a></p>`;
     } else {
       const arquivo = `<a class="op-lembrete" href="${esc(l.ics)}">
         <b>Outro app de calendário</b><small>Samsung, Outlook e outros. Já vem com aviso 1 hora antes</small></a>`;

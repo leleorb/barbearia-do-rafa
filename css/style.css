@@ -262,6 +262,7 @@ fieldset.passo { border: 0; border-bottom: 1px solid var(--linha); padding-left:
 .op-lembrete small { display: block; color: var(--suave); font-size: .8rem; margin-top: .1rem; }
 .op-lembrete.principal { border-color: var(--terra); background: #f8efe7; }
 .nota-lembrete, .aviso-app { font-size: .8rem; color: var(--suave); margin: .2rem 0 0; }
+.nota-lembrete a { display: inline-flex; align-items: center; min-height: 44px; color: var(--terra); font-weight: 600; }
 .aviso-app { background: #fff4dc; color: #6b4a12; padding: .7rem .9rem; border-radius: 10px; margin: 0; }
 .ok .opcoes-lembrete { max-width: 30rem; margin-top: .8rem; }
 
