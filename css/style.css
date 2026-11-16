@@ -17,6 +17,7 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
+a, button, label, input { -webkit-tap-highlight-color: transparent; }
 body { margin: 0; font-family: var(--texto); color: var(--tinta); background: var(--papel); line-height: 1.6; -webkit-font-smoothing: antialiased; }
 img { max-width: 100%; height: auto; display: block; }
 a { color: inherit; }
@@ -28,7 +29,7 @@ p { margin: 0; }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
 
 /* Botões */
-.btn { display: inline-flex; align-items: center; justify-content: center; gap: .55rem; padding: .95rem 1.5rem; border-radius: 999px; font: 600 .92rem var(--texto); text-decoration: none; background: transparent; border: 1.5px solid transparent; cursor: pointer; transition: transform .15s, background .2s, border-color .2s, color .2s; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: .55rem; min-height: 44px; padding: .95rem 1.5rem; border-radius: 999px; font: 600 .92rem var(--texto); text-decoration: none; background: transparent; border: 1.5px solid transparent; cursor: pointer; transition: transform .15s, background .2s, border-color .2s, color .2s; }
 .btn:hover { transform: translateY(-1px); }
 .btn:focus-visible, a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--ouro); outline-offset: 3px; }
 .btn-ouro { background: var(--ouro); color: var(--cafe); }
@@ -229,6 +230,16 @@ fieldset.passo { border: 0; border-bottom: 1px solid var(--linha); padding-left:
 .ok > p { color: var(--suave); }
 .ok .acoes { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: 1.6rem; }
 .opcao input:disabled + .cx { opacity: .4; cursor: not-allowed; }
+
+/* Opções do lembrete (Android e navegadores de app) */
+.opcoes-lembrete { grid-column: 1 / -1; display: grid; gap: .5rem; margin-top: .7rem; }
+.op-lembrete { display: block; min-height: 44px; padding: .8rem 1rem; border: 1.5px solid var(--linha); border-radius: 12px; background: #fff; color: var(--tinta); text-decoration: none; }
+.op-lembrete b { display: block; font-size: .95rem; }
+.op-lembrete small { display: block; color: var(--suave); font-size: .8rem; margin-top: .1rem; }
+.op-lembrete.principal { border-color: var(--terra); background: #f8efe7; }
+.nota-lembrete, .aviso-app { font-size: .8rem; color: var(--suave); margin: .2rem 0 0; }
+.aviso-app { background: #fff4dc; color: #6b4a12; padding: .7rem .9rem; border-radius: 10px; margin: 0; }
+.ok .opcoes-lembrete { max-width: 30rem; margin-top: .8rem; }
 
 @media (min-width: 900px) {
   .ag { grid-template-columns: minmax(0, 1fr) 360px; gap: 4rem; padding-bottom: 5rem; }

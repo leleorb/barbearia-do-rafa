@@ -125,7 +125,7 @@
   // Resumo e validação
   const servicoAtual = () => B.servicos.find(s => s.id === est.servico);
   const barbeiroNome = () => (barbeiros.find(b => b.id === est.barbeiro) || { name: 'Sem preferência' }).name;
-  const telDigitos = () => $('tel').value.replace(/\D/g, '');
+  const telDigitos = () => window.Barbearia.normTel($('tel').value);
   function faltando() {
     const f = [];
     if (!est.servico) f.push('o serviço');
@@ -147,13 +147,7 @@
     $('enviar').setAttribute('aria-disabled', faltando().length || enviando ? 'true' : 'false');
   }
 
-  $('tel').addEventListener('input', e => {
-    const d = telDigitos().slice(0, 11);
-    e.target.value = d.length <= 2 ? d
-      : d.length <= 6 ? `(${d.slice(0, 2)}) ${d.slice(2)}`
-      : d.length <= 10 ? `(${d.slice(0, 2)}) ${d.slice(2, 6)}-${d.slice(6)}`
-      : `(${d.slice(0, 2)}) ${d.slice(2, 7)}-${d.slice(7)}`;
-  });
+  $('tel').addEventListener('input', e => { e.target.value = window.Barbearia.mascaraTel(e.target.value); });
 
   try {
     const salvo = JSON.parse(localStorage.getItem('barbearia-rafa-cliente') || '{}');
@@ -231,8 +225,8 @@
           <div><dt>Barbeiro</dt><dd>${esc(barbeiroNome())}</dd></div>
         </dl>
         <p>Se precisar desmarcar ou mudar, é só chamar no WhatsApp.</p>
-        <div class="acoes">
-          <button class="btn btn-ouro" type="button" id="lembrete">Adicionar lembrete no calendário</button>
+        <div class="acoes" data-lembrete-caixa>
+          <button class="btn btn-ouro" type="button" id="lembrete" aria-expanded="false">Adicionar lembrete no calendário</button>
           <a class="btn btn-terra" href="meus-agendamentos.html">Ver meus agendamentos</a>
         </div>
         <div class="acoes">
@@ -240,10 +234,7 @@
           <a class="btn btn-linha-escura" href="index.html">Voltar ao início</a>
         </div>
       </div>`;
-    $('lembrete').addEventListener('click', e => {
-      window.Barbearia.baixarIcs(ag);
-      e.target.textContent = 'Abra o arquivo baixado';
-    });
+    $('lembrete').addEventListener('click', e => window.Barbearia.lembrete(e.currentTarget, ag));
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 

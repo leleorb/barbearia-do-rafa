@@ -48,8 +48,8 @@
           <div class="nome">${esc(a.servico)}<span class="chip ${esc(a.status)}">${esc(STATUS[a.status] || a.status)}</span></div>
           <div class="det">com ${esc(a.barbeiro)}</div>
         </div>
-        ${ativo ? `<div class="acoes">
-          <button class="lembrete" type="button" data-lembrete="${esc(a.id)}">Adicionar lembrete</button>
+        ${ativo ? `<div class="acoes" data-lembrete-caixa>
+          <button class="lembrete" type="button" data-lembrete="${esc(a.id)}" aria-expanded="false">Adicionar lembrete</button>
           <a class="ruim" href="${esc(wa(msgCancelar))}" target="_blank" rel="noopener">Cancelar pelo WhatsApp</a>
         </div>` : ''}
       </article>`;
@@ -72,17 +72,15 @@
     if (!b) return;
     const a = lista.find(x => x.id === b.dataset.lembrete);
     if (!a) return;
-    C.baixarIcs(a);
-    const antes = b.textContent; b.textContent = 'Abra o arquivo baixado';
-    setTimeout(() => { b.textContent = antes; }, 4000);
+    C.lembrete(b, a);
   });
 
   $('tel').addEventListener('input', e => { e.target.value = C.mascaraTel(e.target.value); $('erro-login').textContent = ''; });
 
   $('form-login').addEventListener('submit', e => {
     e.preventDefault();
-    const d = $('tel').value.replace(/\D/g, '');
-    if (!/^\d{10,11}$/.test(d)) { $('erro-login').textContent = 'Confere o número, com DDD.'; return; }
+    if (!C.telValido($('tel').value)) { $('erro-login').textContent = 'Confere o número, com DDD.'; return; }
+    const d = C.normTel($('tel').value);
     C.Login.gravar(d); abre(d);
   });
 

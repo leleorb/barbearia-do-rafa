@@ -15,7 +15,9 @@
   let timer = null;
 
   // ---------- datas (sempre no fuso de Belém) ----------
-  const fmtDia = new Intl.DateTimeFormat('en-CA', { timeZone: TZ });                   // 2026-11-17
+  // AAAA-MM-DD no fuso de Belém, montado peça por peça (não depende do formato de um idioma).
+  const partesDia = new Intl.DateTimeFormat('pt-BR', { timeZone: TZ, year: 'numeric', month: '2-digit', day: '2-digit' });
+  const fmtDia = { format: d => { const p = Object.fromEntries(partesDia.formatToParts(d).map(x => [x.type, x.value])); return `${p.year}-${p.month}-${p.day}`; } };
   const hojeBelem = () => fmtDia.format(new Date());
   const somaDias = (iso, n) => { const d = new Date(iso + 'T12:00:00-03:00'); d.setUTCDate(d.getUTCDate() + n); return fmtDia.format(d); };
   const horaTxt = iso => new Intl.DateTimeFormat('pt-BR', { timeZone: TZ, hour: '2-digit', minute: '2-digit' }).format(new Date(iso));

@@ -19,7 +19,8 @@ body.painel { background: var(--creme); min-height: 100vh; }
 .filtros { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1.2rem; }
 .filtro, .filtro-data input { font: 600 .85rem var(--texto); padding: .6rem 1.05rem; border-radius: 999px; border: 1.5px solid var(--linha); background: #fff; color: var(--tinta); cursor: pointer; }
 .filtro[aria-pressed="true"] { background: var(--cafe); color: var(--creme); border-color: var(--cafe); }
-.filtro-data input { padding: .5rem .9rem; }
+.filtro-data input { padding: .5rem .9rem; font-size: 16px; min-height: 44px; } /* 16px: o iPhone não dá zoom ao tocar */
+.filtro { min-height: 44px; }
 .contagem { color: var(--suave); font-size: .9rem; margin-bottom: 1rem; }
 .lista { display: grid; gap: .7rem; }
 .dia-sep { font-family: var(--titulo); font-size: 1.25rem; margin: 1.4rem 0 .2rem; text-transform: capitalize; }
@@ -31,7 +32,7 @@ body.painel { background: var(--creme); min-height: 100vh; }
 .cartao .nome { font-weight: 600; }
 .cartao .det { color: var(--suave); font-size: .88rem; }
 .cartao .acoes { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: .45rem; margin-top: .6rem; padding-top: .8rem; border-top: 1px solid var(--linha); }
-.cartao .acoes button, .cartao .acoes a { font: 600 .8rem var(--texto); padding: .5rem .85rem; border-radius: 999px; border: 1.5px solid var(--linha); background: #fff; color: var(--tinta); cursor: pointer; text-decoration: none; }
+.cartao .acoes button, .cartao .acoes a { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; font: 600 .82rem var(--texto); padding: .5rem 1rem; border-radius: 999px; border: 1.5px solid var(--linha); background: #fff; color: var(--tinta); cursor: pointer; text-decoration: none; }
 .cartao .acoes button:hover, .cartao .acoes a:hover { border-color: var(--tinta); }
 .cartao .acoes .ok { background: #3f7d4e; border-color: #3f7d4e; color: #fff; }
 .cartao .acoes .ruim { color: #9a2f1f; }
