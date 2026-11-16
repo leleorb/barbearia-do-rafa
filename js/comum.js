@@ -38,6 +38,10 @@
   const ehAndroid = /Android/i.test(ua);
   // Navegadores de dentro de apps (Instagram, Facebook, TikTok...) costumam bloquear downloads.
   const ehDentroDeApp = /Instagram|FBAN|FBAV|FB_IAB|FBIOS|Line\/|Snapchat|musical_ly|BytedanceWebview|TikTok/i.test(ua);
+  // No iPhone, só o Safari de verdade abre evento de calendário. O app do Google (GSA), o Chrome (CriOS),
+  // o Firefox (FxiOS), o Edge (EdgiOS) e os navegadores de dentro de apps só oferecem "baixar arquivo".
+  const ehSafariIOS = ehIOS && /Version\/[\d.]+/.test(ua)
+    && !/CriOS|FxiOS|EdgiOS|OPiOS|GSA\/|DuckDuckGo|Brave|YaBrowser/i.test(ua) && !ehDentroDeApp;
 
   // ---------- datas (sempre no fuso de Belém) ----------
   // formatToParts em vez de depender do formato de um idioma (que já mudou em versões do Chrome).
@@ -66,7 +70,7 @@
   // Android e outros: mostra as opções logo abaixo do botão.
   function lembrete(botao, ag) {
     const l = linksLembrete(ag);
-    if (ehIOS && !ehDentroDeApp) { window.location.href = l.ics; return; }
+    if (ehSafariIOS) { window.location.href = l.ics; return; } // Safari: abre "Adicionar ao Calendário"
     const caixa = botao.closest('[data-lembrete-caixa]') || botao.parentElement;
     let painel = caixa.parentElement.querySelector('.opcoes-lembrete');
     if (painel) { painel.remove(); botao.setAttribute('aria-expanded', 'false'); return; }
@@ -74,15 +78,30 @@
     painel.className = 'opcoes-lembrete';
     const google = `<a class="op-lembrete principal" href="${esc(l.google)}" target="_blank" rel="noopener">
         <b>Google Agenda</b><small>Abre o Google Agenda pra salvar o horário</small></a>`;
-    const arquivo = `<a class="op-lembrete${ehIOS ? ' principal' : ''}" href="${esc(l.ics)}">
-        <b>${ehIOS ? 'Calendário do iPhone' : 'Outro app de calendário'}</b><small>${ehIOS ? 'Com aviso 1 hora antes' : 'Samsung, Outlook e outros. Já vem com aviso 1 hora antes'}</small></a>`;
-    painel.innerHTML = `
-      ${ehDentroDeApp ? '<p class="aviso-app">Você está no navegador do Instagram ou Facebook, que pode bloquear o lembrete. Se não abrir, toque em <b>⋯</b> e escolha <b>Abrir no navegador</b>.</p>' : ''}
-      ${ehIOS ? arquivo + google : google + arquivo}
-      ${ehIOS ? '' : '<p class="nota-lembrete">No Google Agenda, o aviso segue o padrão do seu celular. Se quiser, ajuste pra 1 hora antes ao salvar.</p>'}`;
+    if (ehIOS) {
+      // iPhone fora do Safari (app do Google, Chrome, Instagram...): o arquivo só viraria "baixar". Oferece o
+      // Google Agenda e explica como chegar ao Calendário do iPhone.
+      painel.innerHTML = `
+        <p class="aviso-app">Este navegador não consegue abrir o <b>Calendário do iPhone</b>. Use o Google Agenda abaixo, ou abra esta página no <b>Safari</b> pra adicionar direto ao Calendário.</p>
+        ${google}
+        <button class="op-lembrete" type="button" data-copiar><b>Copiar o endereço desta página</b><small>Cole no Safari pra adicionar ao Calendário do iPhone</small></button>
+        <p class="nota-lembrete">No Google Agenda, o aviso segue o padrão do seu celular. Se quiser, ajuste pra 1 hora antes ao salvar.</p>`;
+      painel.querySelector('[data-copiar]').addEventListener('click', async e => {
+        const b = e.currentTarget, rot = b.querySelector('b');
+        try { await navigator.clipboard.writeText(location.href); rot.textContent = 'Endereço copiado!'; }
+        catch (err) { rot.textContent = 'Segure o endereço na barra e copie'; }
+      });
+    } else {
+      const arquivo = `<a class="op-lembrete" href="${esc(l.ics)}">
+        <b>Outro app de calendário</b><small>Samsung, Outlook e outros. Já vem com aviso 1 hora antes</small></a>`;
+      painel.innerHTML = `
+        ${ehDentroDeApp ? '<p class="aviso-app">Você está no navegador do Instagram ou Facebook, que pode bloquear o lembrete. Se não abrir, toque em <b>⋯</b> e escolha <b>Abrir no navegador</b>.</p>' : ''}
+        ${google}${arquivo}
+        <p class="nota-lembrete">No Google Agenda, o aviso segue o padrão do seu celular. Se quiser, ajuste pra 1 hora antes ao salvar.</p>`;
+    }
     caixa.insertAdjacentElement('afterend', painel);
     botao.setAttribute('aria-expanded', 'true');
   }
 
-  window.Barbearia = { Login, normTel, fmtTel, mascaraTel, telValido, linksLembrete, lembrete, fmt, TZ, ehIOS, ehAndroid, ehDentroDeApp };
+  window.Barbearia = { Login, normTel, fmtTel, mascaraTel, telValido, linksLembrete, lembrete, fmt, TZ, ehIOS, ehAndroid, ehDentroDeApp, ehSafariIOS };
 })();
