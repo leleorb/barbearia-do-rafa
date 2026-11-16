@@ -183,11 +183,12 @@
     enviando = true; atualiza();
     $('enviar').textContent = 'Reservando…';
     try {
-      await api('rpc/criar_agendamento', {
+      const id = await api('rpc/criar_agendamento', {
         p_servico: est.servico, p_barbeiro: est.barbeiro || null, p_dia: est.dia,
         p_hora: est.hora, p_nome: nome, p_telefone: telDigitos()
       });
-      confirmado();
+      window.Barbearia.Login.gravar(telDigitos()); // já fica "logado" em Meus agendamentos
+      confirmado(id);
     } catch (err) {
       $('enviar').textContent = 'Confirmar agendamento';
       if (ERROS[err.message]) {
@@ -214,8 +215,11 @@
   }
   const abreWhatsApp = msg => window.open(`https://wa.me/${B.whatsapp}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener');
 
-  function confirmado() {
+  function confirmado(id) {
     const msg = mensagem('Olá! Acabei de agendar pelo site:');
+    const s = servicoAtual();
+    const inicio = new Date(`${est.dia}T${est.hora}:00-03:00`);
+    const ag = { id, starts_at: inicio.toISOString(), ends_at: new Date(inicio.getTime() + s.minutos * 60000).toISOString(), servico: s.nome, barbeiro: est.barbeiro ? barbeiroNome() : 'nossa equipe' };
     $('form').innerHTML = `
       <div class="ok" role="status">
         <p class="sobre">Horário reservado</p>
@@ -228,10 +232,18 @@
         </dl>
         <p>Se precisar desmarcar ou mudar, é só chamar no WhatsApp.</p>
         <div class="acoes">
-          <a class="btn btn-terra" href="https://wa.me/${B.whatsapp}?text=${encodeURIComponent(msg)}" target="_blank" rel="noopener">Avisar no WhatsApp</a>
+          <button class="btn btn-ouro" type="button" id="lembrete">Adicionar lembrete no calendário</button>
+          <a class="btn btn-terra" href="meus-agendamentos.html">Ver meus agendamentos</a>
+        </div>
+        <div class="acoes">
+          <a class="btn btn-linha-escura" href="https://wa.me/${B.whatsapp}?text=${encodeURIComponent(msg)}" target="_blank" rel="noopener">Avisar no WhatsApp</a>
           <a class="btn btn-linha-escura" href="index.html">Voltar ao início</a>
         </div>
       </div>`;
+    $('lembrete').addEventListener('click', e => {
+      window.Barbearia.baixarIcs(ag);
+      e.target.textContent = 'Abra o arquivo baixado';
+    });
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 

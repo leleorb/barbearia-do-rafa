@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Meus agendamentos · Barbearia do Rafa</title>
+  <meta name="description" content="Veja seus horários marcados na Barbearia do Rafa e adicione um lembrete no calendário do celular.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#1c130e">
+  <link rel="icon" href="img/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;0,6..96,600;1,6..96,500&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/painel.css">
+  <link rel="stylesheet" href="css/meus.css">
+</head>
+<body class="painel meus">
+
+<header class="topo">
+  <div class="wrap">
+    <a class="marca" href="index.html"><img src="img/logo.png" alt=""><span>Barbearia do Rafa</span></a>
+    <nav class="nav" aria-label="Seções">
+      <a href="index.html#servicos">Serviços</a>
+      <a href="index.html#planos">Planos</a>
+      <a href="index.html#onde">Onde estamos</a>
+    </nav>
+    <a class="btn btn-ouro" href="agendamento.html">Agendar</a>
+  </div>
+</header>
+
+<main>
+  <!-- Entrar com o telefone -->
+  <section class="login wrap" id="login">
+    <form id="form-login" novalidate>
+      <p class="sobre">Meus agendamentos</p>
+      <h1>Qual é o seu <em>WhatsApp?</em></h1>
+      <p class="intro">Use o mesmo número que você informou ao agendar. Você só precisa fazer isso uma vez neste aparelho.</p>
+      <div class="campo">
+        <label for="tel">WhatsApp com DDD</label>
+        <input id="tel" type="tel" inputmode="tel" autocomplete="tel" placeholder="(91) 9 0000-0000" required>
+      </div>
+      <button class="btn btn-ouro" type="submit" id="entrar">Ver meus horários</button>
+      <p class="erro" id="erro-login" role="alert"></p>
+    </form>
+  </section>
+
+  <!-- Lista -->
+  <section class="agenda wrap" id="agenda" hidden>
+    <div class="agenda-cab">
+      <div>
+        <p class="sobre" id="quem">—</p>
+        <h1>Meus <em>horários</em></h1>
+      </div>
+      <button class="btn btn-linha-escura" type="button" id="sair">Trocar número</button>
+    </div>
+    <p class="erro" id="erro-agenda" role="alert"></p>
+    <div id="proximos" class="lista" aria-live="polite"></div>
+    <h2 class="sec-hist" id="tit-hist" hidden>Histórico</h2>
+    <div id="historico" class="lista"></div>
+    <p class="ajuda" id="ajuda" hidden>Não achou seu horário? Confere se o número é o mesmo que usou ao agendar, ou
+      <a class="js-wpp" href="#">chama a gente no WhatsApp</a>.</p>
+  </section>
+</main>
+
+<footer class="rodape">
+  <div class="wrap">
+    <span>© <span id="ano"></span> Barbearia do Rafa · Tv. Quintino Bocaiúva, 1900, Nazaré, Belém (PA)</span>
+    <span><a href="index.html">Início</a> · <a href="agendamento.html">Agendar</a></span>
+  </div>
+</footer>
+
+<script src="js/dados.js"></script>
+<script src="js/comum.js"></script>
+<script src="js/meus.js"></script>
+</body>
+</html>

@@ -5,6 +5,9 @@ window.BARBEARIA = {
   supabaseUrl: 'https://kfuitldodcajyurnuhhd.supabase.co',
   supabaseKey: 'sb_publishable_0f8VxiWnRnVnRNa_rL7ybw_h12eiOi_',
 
+  nome: 'Barbearia do Rafa',
+  endereco: 'Tv. Quintino Bocaiúva, 1900, Nazaré, Belém - PA, 66045-315',
+
   whatsapp: '5591991642161',
   whatsappTexto: '(91) 99164-2161',
 

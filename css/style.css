@@ -59,6 +59,8 @@ p { margin: 0; }
 .nota { display: flex; align-items: center; gap: .6rem; margin-top: 2rem; font-size: .85rem; color: rgba(244, 238, 230, .7); }
 .nota b { color: var(--creme); font-size: 1rem; }
 .estrelas { color: var(--ouro); letter-spacing: .1em; }
+.ja-agendou { margin-top: .8rem; font-size: .85rem; color: rgba(244, 238, 230, .7); }
+.ja-agendou a { color: var(--ouro); font-weight: 600; }
 .capa-foto { position: relative; justify-self: center; width: min(100%, 420px); }
 .capa-foto img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 220px 220px var(--raio) var(--raio); }
 .capa-foto::before { content: ''; position: absolute; inset: -12px; border: 1px solid rgba(217, 165, 90, .45); border-radius: 232px 232px 20px 20px; pointer-events: none; }

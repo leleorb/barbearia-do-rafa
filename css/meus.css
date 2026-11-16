@@ -1,0 +1,13 @@
+body.meus .login .intro { color: var(--suave); margin: -.8rem 0 1.4rem; font-size: .95rem; }
+body.meus .agenda-cab h1 em { color: var(--terra); }
+body.meus .agenda-cab .btn { padding: .6rem 1rem; font-size: .82rem; }
+.sec-hist { font-size: 1.3rem; margin: 2.4rem 0 .9rem; color: var(--suave); }
+.ajuda { margin-top: 2rem; color: var(--suave); font-size: .9rem; }
+.ajuda a { color: var(--terra); font-weight: 600; }
+.cartao .quando { grid-row: span 2; align-self: center; min-width: 4.4rem; text-align: left; }
+.cartao .quando .hora { grid-row: auto; font-size: 1.7rem; display: block; }
+.cartao .quando small { display: block; color: var(--suave); font-size: .72rem; line-height: 1.25; margin-top: .15rem; }
+.cartao .quando small::first-letter { text-transform: uppercase; }
+.cartao .acoes .lembrete { background: var(--cafe); border-color: var(--cafe); color: var(--creme); }
+.cartao .acoes .lembrete:hover { background: #2a1d15; }
+.cartao.passado { opacity: .7; }
