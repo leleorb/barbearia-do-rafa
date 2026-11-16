@@ -13,9 +13,10 @@
     { rotulo: 'Serviços', href: ancora('servicos') },
     { rotulo: 'Planos', href: ancora('planos') },
     { rotulo: 'Fotos', href: ancora('fotos') },
-    { rotulo: 'Onde estamos', href: ancora('onde') },
-    { rotulo: 'Meus agendamentos', href: 'meus-agendamentos.html', atual: caminho === 'meus-agendamentos.html' }
+    { rotulo: 'Onde estamos', href: ancora('onde') }
   ].filter(Boolean);
+  const naMeus = caminho === 'meus-agendamentos.html';
+  const icone = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4M9 15l2 2 4-4"/></svg>';
 
   const wpp = B.whatsapp ? `https://wa.me/${B.whatsapp}?text=${encodeURIComponent('Olá! Vim pelo site e queria tirar uma dúvida.')}` : '#';
 
@@ -36,6 +37,8 @@
   painel.setAttribute('aria-label', 'Menu');
   painel.hidden = true;
   painel.innerHTML = `
+    <a class="menu-meus" href="meus-agendamentos.html"${naMeus ? ' aria-current="page"' : ''}>${icone}
+      <span><b>Meus agendamentos</b><small>Veja seus horários, lembrete e cancelamento</small></span></a>
     <ul>${itens.map(i => `<li><a href="${i.href}"${i.atual ? ' aria-current="page"' : ''}>${i.rotulo}</a></li>`).join('')}</ul>
     <a class="btn btn-ouro menu-cta" href="agendamento.html"${caminho === 'agendamento.html' ? ' aria-current="page"' : ''}>Agendar horário</a>
     <div class="menu-rodape">

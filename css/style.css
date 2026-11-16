@@ -285,3 +285,34 @@ fieldset.passo { border: 0; border-bottom: 1px solid var(--linha); padding-left:
   input, textarea, select { -webkit-user-select: text; user-select: text; -webkit-touch-callout: default; }
   img { -webkit-user-drag: none; }
 }
+
+/* "Meus agendamentos" em destaque: botão no topo, cartão no menu do celular e atalho na capa */
+.topo .wrap { justify-content: flex-start; }
+.topo .marca { margin-right: auto; min-width: 0; }
+.btn-meus { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; flex: none; min-height: 44px; padding: .55rem 1.05rem; border: 1.5px solid var(--ouro); border-radius: 999px; background: rgba(217, 165, 90, .12); color: var(--ouro); font: 600 .85rem/1 var(--texto); text-decoration: none; white-space: nowrap; transition: background .2s, color .2s; }
+.btn-meus svg { width: 18px; height: 18px; flex: none; }
+.btn-meus:hover, .btn-meus[aria-current="page"] { background: var(--ouro); color: var(--cafe); }
+.btn-meus .rot-curto { display: none; }
+@media (max-width: 899px) {
+  /* No celular: ícone com a palavra "Horários" embaixo, do lado do ☰ */
+  .topo .wrap { gap: .5rem; }
+  .btn-meus { flex-direction: column; gap: 3px; width: 64px; min-height: 48px; padding: 5px 4px; border-radius: 12px; font-size: .64rem; letter-spacing: .02em; }
+  .btn-meus svg { width: 20px; height: 20px; }
+  .btn-meus .rot-longo { display: none; }
+  .btn-meus .rot-curto { display: block; }
+}
+@media (max-width: 359px) {
+  .marca span { font-size: 1rem; }
+  .marca img { width: 34px; height: 34px; }
+  .btn-meus { width: 56px; }
+}
+.menu-meus { display: flex; align-items: center; gap: .9rem; margin: .9rem 0 .6rem; padding: 1rem 1.1rem; min-height: 64px; border: 1.5px solid var(--ouro); border-radius: 14px; background: rgba(217, 165, 90, .12); color: var(--creme); text-decoration: none; }
+.menu-meus svg { width: 26px; height: 26px; flex: none; color: var(--ouro); }
+.menu-meus b { display: block; font-family: var(--titulo); font-size: 1.2rem; font-weight: 600; color: var(--ouro); }
+.menu-meus small { display: block; font-size: .8rem; color: rgba(244, 238, 230, .7); line-height: 1.35; }
+.menu-meus[aria-current="page"] { background: var(--ouro); }
+.menu-meus[aria-current="page"] b, .menu-meus[aria-current="page"] svg, .menu-meus[aria-current="page"] small { color: var(--cafe); }
+a.ja-agendou { display: inline-flex; align-items: center; gap: .6rem; min-height: 44px; margin-top: 1rem; padding: .55rem 1.1rem; border: 1.5px solid rgba(217, 165, 90, .55); border-radius: 999px; background: rgba(217, 165, 90, .1); color: rgba(244, 238, 230, .85); font-size: .88rem; text-decoration: none; }
+a.ja-agendou svg { width: 18px; height: 18px; flex: none; color: var(--ouro); }
+a.ja-agendou b { color: var(--ouro); font-weight: 600; }
+a.ja-agendou:hover { border-color: var(--ouro); }
