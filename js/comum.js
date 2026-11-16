@@ -58,7 +58,8 @@
       location: B.endereco,
       details: `${ag.servico} com ${ag.barbeiro}. Dica: deixe a notificação do evento em 1 hora antes. Para cancelar, chame no WhatsApp ${B.whatsappTexto}.`
     }).toString();
-    return { ics: `${B.supabaseUrl}/functions/v1/lembrete?id=${encodeURIComponent(ag.id)}`, google };
+    // Termina em .ics: o Safari do iPhone usa isso pra abrir o Calendário em vez de oferecer download.
+    return { ics: `${B.supabaseUrl}/functions/v1/lembrete/evento.ics?id=${encodeURIComponent(ag.id)}`, google };
   }
 
   // Um botão só. iPhone: abre direto o "Adicionar ao Calendário" do Safari (com aviso 1h antes).
